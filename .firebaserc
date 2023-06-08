@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "clinica-orce-patricio": {
+      "hosting": {
+        "Clinica": [
+          "clinica-orce-patricio"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "clinica-orce-patricio"
+  }
+}
