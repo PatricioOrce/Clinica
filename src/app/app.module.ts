@@ -3,23 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { StorageModule } from '@angular/fire/storage';
+import { EspecialistaListaComponent } from './components/especialista-lista/especialista-lista.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+
   ],
-  providers: [],
+  providers: [    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,11 +1,12 @@
-export interface Paciente {
-  nombre: string;
-  apellido: string;
-  edad: number;
-  dni: string;
-  obraSocial: string;
-  mail: string;
-  password: string;
-  imagenPerfil1: File | undefined;
-  imagenPerfil2: File | undefined;
+import { Usuario } from "./usuario";
+
+export class Paciente extends Usuario{
+  obraSocial!: string;
+  imagenPerfil2!: File;
+
+  constructor() {
+    super()
+    this.perfil = "paciente"    
+   }
+ 
 }

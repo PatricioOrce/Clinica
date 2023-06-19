@@ -1,13 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CuentaHabilitadaGuard } from './guards/cuenta-habilitada.guard';
+import { LogedInGuard } from './guards/loged-in.guard';
 
 const routes: Routes = [
   {
-    path: 'bienvenida',
+    
+    path: '',
     loadChildren: () =>
       import('./pages/bienvenida/bienvenida.module').then(
         (m) => m.BienvenidaModule
       ),
+
+  },
+  {
+    
+    path: 'home',
+    loadChildren: () =>
+      import('./pages/home/home.module').then(
+        (m) => m.HomeModule
+      ),
+
   },
   {
     path: 'registro',
@@ -23,7 +36,9 @@ const routes: Routes = [
     path: 'usuarios',
     loadChildren: () =>
       import('./pages/usuarios/usuarios.module').then((m) => m.UsuariosModule),
-  },
+
+    canActivate: [LogedInGuard]
+  }
 ];
 
 @NgModule({

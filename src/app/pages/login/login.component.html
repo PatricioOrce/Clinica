@@ -1,1 +1,27 @@
-<p>login works!</p>
+<!-- <div class="container">
+    <h1>Iniciar sesión</h1>
+    <form (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+      </div>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+</div> -->
+
+
+<form class="form-signin">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input type="email" id="inputEmail" class="form-control" name="email" [(ngModel)]="email" placeholder="Email address" required>
+  <br>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="password" placeholder="Password"
+      required>
+  <button class="btn btn-lg btn-primary btn-block" (click)="login()">Sign in</button>
+  <!-- <button class="btn btn-lg btn-secondary btn-block" (click)="accesoRapido()">Acceso Rapido</button> -->
+</form>

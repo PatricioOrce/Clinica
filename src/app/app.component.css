@@ -1,7 +1,6 @@
 body {
     min-height: 75rem;
   }
-  
   a {
     color: whitesmoke;
     transition: all 0.2s ease-in-out;
@@ -16,8 +15,9 @@ body {
   }
   
   .site-header {
-    background-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(151, 149, 149, 0.2);
+    box-shadow: 0 2px 4px rgba(126, 126, 126, 0.5);
+    height: 50px;
   }
   
   .site-header a {

@@ -1,0 +1,3 @@
+<div class="container" *ngIf="this.authService.isLoggedIn">
+    <h1>Bienvenido {{this.authService.usuarioLogeado.mail}}({{this.authService.usuarioLogeado.perfil}})</h1>
+</div>
