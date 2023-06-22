@@ -27,7 +27,6 @@ export class AuthService implements OnInit {
 
   public usuarioLogeado: any =
     this.getUsuarioLogueado() !== null ? this.getUsuarioLogueado() : false;
-  public usuario: any;
   public ITEM_ACCESOS: any; // objeto con accesos utilizado en todo el sistema
   public msjError: string = '';
 
@@ -45,14 +44,15 @@ export class AuthService implements OnInit {
     this.usuarioLogeado = item;
   }
   public getUsuarioLogueado() {
-    const returnvalue = JSON.parse(
-      localStorage.getItem('usuarioLogeado') ?? ''
-    );
-    if (returnvalue == '') return null;
-    return returnvalue;
+    const returnvalue = localStorage.getItem('usuarioLogeado');
+    if (returnvalue === null || returnvalue === '') {
+      return null;
+    } else {
+      return JSON.parse(returnvalue);
+    }
   }
   public setearUsuarioYAccesos() {
-    this.usuario = null;
+    this.usuarioLogeado = null;
     this.setearUsuarioLogeado(null);
   }
 
@@ -94,7 +94,7 @@ export class AuthService implements OnInit {
         this.msjError = '';
         console.log("inicial", result)
         if (result.user) {
-          if (result.user.emailVerified) {
+          // if (result.user.emailVerified) {
             this.usuariosService.getByEmail(email).subscribe((x) => {
               console.log("primero", x)
               if (x?.perfil == 'especialista') {
@@ -122,7 +122,7 @@ export class AuthService implements OnInit {
               this.updateLoginStatus(true);
               this.router.navigate(['/home']);
             });
-          }
+          // }
           //error verifica email
         }
       })
@@ -136,6 +136,7 @@ export class AuthService implements OnInit {
     this.setearUsuarioYAccesos();
     this.updateLoginStatus(false);
     localStorage.removeItem('usuarioLogeado');
+    this.router.navigate(['/'])
   }
 
   private getError(msj: string): string {

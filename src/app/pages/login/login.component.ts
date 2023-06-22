@@ -25,5 +25,29 @@ export class LoginComponent {
     this.password = "test@test.com";
     this.email = "test@test.com";
   }
-
+  accesoRapidoAdmin(){
+    this.password = "123456789"
+    this.email = "patricioorce2001@gmail.com"
+  }
+  accesoRapidoEspecialista1(){
+    
+    this.password = "123456789"
+    this.email = "parturotru@gufum.com"
+  }
+  accesoRapidoEspecialista2(){
+    this.password = "1234567"
+    this.email = "joknuzofya@gufum.com"
+  }
+  accesoRapidoPaciente1(){
+    this.password = "123456789"
+    this.email = "ladrunofyu@gufum.com"
+  }
+  accesoRapidoPaciente2(){
+    this.password = "123456789"
+    this.email = "dafyugortu@gufum.com"
+  }
+  accesoRapidoPaciente3(){
+    this.password = "123456789"
+    this.email = "lorkiharza@gufum.com"
+  }
 }

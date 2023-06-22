@@ -19,17 +19,21 @@ export class LogedInGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.usuario$?.pipe(
-      take(1),
-      map((user) => {
-        if (user) {
-          this.router.navigate(['inicio']);
-          return false;
-        } else {
-          return true;
-        }
-      })
-    );
+    if (this.authSvc.isLoggedIn)
+      return true
+    return false;
+    
+    // this.usuario$?.pipe(
+    //   take(1),
+    //   map((user) => {
+    //     if (user) {
+    //       this.router.navigate(['login']);
+    //       return false;
+    //     } else {
+    //       return true;
+    //     }
+    //   })
+    // );
   }
   
 }

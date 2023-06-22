@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable, map, take } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 export class MailVerifiedGuard implements CanActivate {
   public usuario$: Observable<any> = this.authSvc.afAuth.user;
 
-  constructor(private authSvc: AuthService, private router: Router) {}
+  constructor(private authSvc: AuthService, private router: Router,private toastr: ToastrService) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -23,11 +24,12 @@ export class MailVerifiedGuard implements CanActivate {
     return this.usuario$?.pipe(
       take(1),
       map((user) => {
-        if (user && !user.emailVerified) {
+        if (user && user.emailVerified) {
           return true;
         } else {
-          this.router.navigate(['bienvenido']);
-          
+          this.router.navigate(['login']);
+          this.toastr.warning('Verifica tu Mail para poder acceder!', 'Hey!');
+          this.authSvc.logOut();
           return false;
         }
       })

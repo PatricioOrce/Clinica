@@ -24,12 +24,11 @@ export class EspecialidadService {
     );
   }
 
-  create(nombre: string): Promise<void> {
-    const id = this.afs.createId();
+  create(nombre: string, id: string): Promise<void> {
     var especialidad = new Especialidad;
     especialidad.id = id;
     especialidad.nombre = nombre;
-    console.log(especialidad, id)
+    console.log("Creacion de Esepecialidad Service",especialidad, id)
     return this.especialidadesCollection.doc(id).set({...especialidad});
   }
 
@@ -37,7 +36,7 @@ export class EspecialidadService {
     return this.especialidades;
   }
 
-  getByName(nombre: string): Observable<Especialidad | undefined> {
+  getByName(nombre: string | undefined): Observable<any> {
     return this.especialidades.pipe(
       map(especialidades => especialidades.find(e => e.nombre === nombre))
     );

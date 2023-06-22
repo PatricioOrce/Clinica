@@ -1,18 +1,3 @@
-<!-- <div class="container">
-    <h1>Iniciar sesión</h1>
-    <form (ngSubmit)="login()">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" [(ngModel)]="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" [(ngModel)]="password" required>
-      </div>
-      <button type="submit">Iniciar sesión</button>
-    </form>
-</div> -->
-
 
 <form class="form-signin">
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -23,5 +8,40 @@
   <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="password" placeholder="Password"
       required>
   <button class="btn btn-lg btn-primary btn-block" (click)="login()">Sign in</button>
-  <!-- <button class="btn btn-lg btn-secondary btn-block" (click)="accesoRapido()">Acceso Rapido</button> -->
 </form>
+
+
+
+<div class="quick-access-buttons">
+  
+  <button class="quick-access-button admin" (click)="accesoRapidoAdmin()">
+    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/especialistas1687214587185.png?alt=media&token=08b0da1f-0787-4763-9519-6724af33d8bd" alt="Imagen de perfil del especialista">
+    <span>Patricio<br>(Admin)</span>
+  </button>
+
+  <button class="quick-access-button specialist" (click)="accesoRapidoEspecialista1()">
+    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/especialistas1687217791442.png?alt=media&token=17ce1a64-cf35-4add-8617-e2420161fc13" alt="Imagen de perfil del paciente">
+    <span>Fulanito<br>(Especialista)</span>
+  </button>
+
+  <button class="quick-access-button patient" (click)="accesoRapidoEspecialista2()">
+    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/especialistas1687210274205.png?alt=media&token=d9cea358-1606-49af-88d1-dc3dc8af1050" alt="Imagen de perfil del paciente">
+    <span>Luis<br>(Especialista)</span>
+  </button>
+
+  <button class="quick-access-button admin" (click)="accesoRapidoPaciente1()">
+    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/pacientes1687216146364.png?alt=media&token=cc5d53d8-1cc7-4ce1-bb69-b4306d1548ac" alt="Imagen de perfil del administrador">
+    <span>Leandro<br>(Paciente)</span>
+  </button>
+
+  <button class="quick-access-button admin" (click)="accesoRapidoPaciente2()">
+    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/pacientes1687225575713.png?alt=media&token=43a9ad21-2b1b-49de-bc72-3ffcc3761edb" alt="Imagen de perfil del administrador">
+    <span>Bender<br>(Paciente)</span>
+  </button>
+
+  <button class="quick-access-button admin" (click)="accesoRapidoPaciente3()">
+    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/pacientes1687223112299.png?alt=media&token=e743302a-4325-46e4-a8ba-a8a2cd787eae" alt="Imagen de perfil del administrador">
+    <span>Jose<br>(Paciente)</span>
+  </button>
+
+</div>

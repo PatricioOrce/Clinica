@@ -1,0 +1,20 @@
+<div>
+    <h3>Especialidades</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Especialidad</th>
+          <th>Seleccionada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let especialidad of especialidades">
+          <td>{{ especialidad.nombre }}</td>
+          <td>
+            <input type="checkbox" [checked]="estaSeleccionada(especialidad)"
+              (change)="toggleSeleccionEspecialidad(especialidad)">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

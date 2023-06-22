@@ -10,7 +10,7 @@ export class AdminService {
   private AdministradorsCollection: AngularFirestoreCollection<Administrador>;
 
   constructor(private firestore: AngularFirestore) {
-    this.AdministradorsCollection = this.firestore.collection<Administrador>('Administradors');
+    this.AdministradorsCollection = this.firestore.collection<Administrador>('administradores');
   }
 
   // Métodos CRUD

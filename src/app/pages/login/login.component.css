@@ -49,3 +49,33 @@ form{
   padding: 20px;
   margin-bottom: 20px;
 }
+.quick-access-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.quick-access-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  margin: 0 10px;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.quick-access-button img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.quick-access-button span {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}

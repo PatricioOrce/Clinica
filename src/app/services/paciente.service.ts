@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Paciente } from '../models/paciente';
 import { Observable, catchError, map } from 'rxjs';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import { UsuariosService } from './usuarios.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +12,9 @@ import { Observable, catchError, map } from 'rxjs';
 export class PacienteService {
 
   private pacientesCollection: AngularFirestoreCollection<Paciente>;
-
-  constructor(private firestore: AngularFirestore) {
-    this.pacientesCollection = this.firestore.collection<Paciente>('pacientes');
+  public dbPath: string = 'pacientes';
+  constructor(private firestore: AngularFirestore, private usuariosService: UsuariosService, private toastr: ToastrService) {
+    this.pacientesCollection = this.firestore.collection<Paciente>(this.dbPath);
   }
 
   // Métodos CRUD
@@ -73,5 +76,37 @@ export class PacienteService {
         console.error('Error al actualizar el paciente:', error);
         throw error;
       });
+  }
+  public uploadImagesAndCreate(item: any, files: any[], id: any): any {
+    console.log(item);
+    console.log(files);
+    const storage = getStorage();
+
+    item.urlFotos = [];
+    let i = 0;
+    files.forEach((file: any) => {
+      let pathImg = this.dbPath + new Date().getTime() + '.png';
+      const imgRef = ref(storage, pathImg);
+      console.log(file);
+      console.log(pathImg);
+      console.log(imgRef);
+      uploadBytes(imgRef, file)
+        .then((e) => {
+          getDownloadURL(e['ref'])
+            .then(async (url: string) => {
+              console.log(url);
+              item.urlFotos.push(url);
+              i++;
+              if (i == files.length) {
+                console.log('this.create(item)');
+                this.usuariosService.insert(item, id).then(() => {
+                  this.insert(item, id).then( () => { this.toastr.success("Paciente creado con exito!", "Exitoso!") });
+                })
+              }
+            })
+            .catch((err) => console.error('getDownloadURL: ', err));
+        })
+        .catch((err) => console.error(err));
+    });
   }
 }

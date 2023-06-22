@@ -27,121 +27,107 @@ export class RegistroComponent {
     private usuariosService: UsuariosService,
   ) {}
 
-  especialistaFormVisible: boolean = false;
+  // especialistaFormVisible: boolean = false;
 
-  paciente: Paciente = new Paciente;
-  especialista: Especialista = new Especialista();
+  // paciente: Paciente = new Paciente;
+  // especialista: Especialista = new Especialista();
 
-  especialidadSeleccionada: Especialidad = new Especialidad;
-  especialidades: Especialidad[] = [];
+  // especialidadSeleccionada: Especialidad = new Especialidad;
+  // especialidades: Especialidad[] = [];
 
   verifyEmail: boolean = false;
-  mostrarFormPaciente = false;
-  mostrarFormEspecialista = false;
+  // mostrarFormPaciente = false;
+  // mostrarFormEspecialista = false;
 
-  especialidadPersonalizada = '';
+  // especialidadPersonalizada = '';
 
-  selectedFiles: any;
+  // selectedFiles: any;
 
-  ngOnInit() {
-    this.especialidadService.getAll().subscribe(
-      (especialidades: Especialidad[]) => {
-        this.especialidades = especialidades;
-      },
-      (error) => {
-        console.error('Error al obtener las especialidades', error);
-      }
-    );
-  }
+  // selectedFile!: FileList;
+  // selectedFile2!: FileList;
 
-  mostrarFormularioPaciente() {
-    this.mostrarFormPaciente = true;
-    this.mostrarFormEspecialista = false;
-  }
+  // ngOnInit() {
+  //   this.especialidadService.getAll().subscribe(
+  //     (especialidades: Especialidad[]) => {
+  //       this.especialidades = especialidades;
+  //     },
+  //     (error) => {
+  //       console.error('Error al obtener las especialidades', error);
+  //     }
+  //   );
+  // }
 
-  mostrarFormularioEspecialista() {
-    this.mostrarFormPaciente = false;
-    this.mostrarFormEspecialista = true;
-  }
-
-  defaultValues() {
-    this.mostrarFormPaciente = false;
-    this.mostrarFormEspecialista = false;
-  }
-
-  async registrarPaciente() {
-    console.log('Registro de paciente:', this.paciente);
-    this.authService
-      .register(this.paciente.mail, this.paciente.password, 'paciente')
-      .then((user) => {
-        if(user){
-          this.pacienteService.insert(this.paciente, user.uid)
-          .then(() => {
-            alert('Se ha creado el paciente correctamente');
-            this.verifyEmail = true;
-          })
-          .catch((err) => {
-            console.log('Error al insertar', err);
-          });
-          this.usuariosService.insert
-        }
-      })
-      .catch(() => {
-        console.log('Error al registrar');
-      });
-  }
-
-  async registrarEspecialista() {
-    this.especialista.especialidades[0] = new Especialidad();
-    this.especialista.especialidades[0].nombre = this.especialidadSeleccionada.nombre == 'otro' ? this.especialidadPersonalizada : this.especialidadSeleccionada.nombre;
-    console.log('Registro de especialista:', this.especialista);
-    this.authService
-    //registro el usuario en firebase (Authentication)
-      .register(this.especialista.mail, this.especialista.password, 'especialista')
-      .then((user) => {
-        if(user){
-          //Si el usuario se registra con exito en firebase, lo intento dar de alta en la base de datos, (Firestore)
-          this.especialidadService.getByName(this.especialidadPersonalizada)
-          .subscribe((especialidadExistente) => {
-            if(!especialidadExistente && this.especialidadSeleccionada.nombre != 'otro'){
-              this.especialidadService.create(this.especialidadPersonalizada)
-            }
-          });
-          //insertar al especialista (Firestore)
-          this.especialistaService.uploadImageAndCreate(this.especialista, this.selectedFiles, user.uid)
-          .then(() => {
-            alert('Se ha creado el especialista io correctamente');
-            this.verifyEmail = true;
-          })
-          // this.especialistaService
-          // .insert(this.especialista, user.uid)
-          // .then(() => {
-
+  // async registrarPaciente() {
+  //   console.log('Registro de paciente:', this.paciente);
+  //   this.authService
+  //     .register(this.paciente.mail, this.paciente.password, 'paciente')
+  //     .then((user) => {
+  //       if(user){
+  //         let arrayFiles = [];
+  //         arrayFiles.push(this.selectedFile);
+  //         arrayFiles.push(this.selectedFile2);
+  //         this.pacienteService.uploadImagesAndCreate(this.paciente, arrayFiles, user.uid).then(() => {
+  //           this.verifyEmail = true;
+  //         })
           
-          // })
-          // .catch((err) => {
-          //   console.log('Error al insertar', err);
-          // });
-        }
-      })
-      .catch(() => {
-        console.log('Error al registrar');
-      });
-  }
+  //       }
+  //     })
+  //     .catch((err ) => {
+  //       console.log('Error al registrar', err);
+  //     });
+  // }
 
-  registrarUsuario(user: any, id: string){
-    this.usuariosService.insert(user, id);
-  }
+  // async registrarEspecialista() {
+  //   this.especialista.especialidades[0] = new Especialidad();
+  //   this.especialista.especialidades[0].nombre = this.especialidadSeleccionada.nombre == 'otro' ? this.especialidadPersonalizada : this.especialidadSeleccionada.nombre;
+  //   console.log('Registro de especialista:', this.especialista);
+  //   this.authService
+  //   //registro el usuario en firebase (Authentication)
+  //     .register(this.especialista.mail, this.especialista.password, 'especialista')
+  //     .then((user) => {
+  //       if(user){
+  //         //Si el usuario se registra con exito en firebase, lo intento dar de alta en la base de datos, (Firestore)
+  //         this.especialidadService.getByName(this.especialidadPersonalizada)
+  //         .subscribe((especialidadExistente) => {
+  //           if(!especialidadExistente && this.especialidadSeleccionada.nombre != 'otro'){
+  //             this.especialidadService.create(this.especialidadPersonalizada)
+  //           }
+  //         });
+  //         //insertar al especialista (Firestore)
+  //         this.especialistaService.uploadImageAndCreate(this.especialista, this.selectedFiles, user.uid)
+  //         .then(() => {
+  //           this.verifyEmail = true;
+  //         })
 
-  onImagenPerfilSeleccionada(event: any) {
-    this.selectedFiles = event.target.files[0];
-    console.log(this.selectedFiles);
-  }
+  //       }
+  //     })
+  //     .catch(() => {
+  //       console.log('Error al registrar');
+  //     });
+  // }
 
+  // registrarUsuario(user: any, id: string){
+  //   this.usuariosService.insert(user, id);
+  // }
 
-  onEspecialidadSeleccionada() {
-    if (this.especialidadSeleccionada.nombre !== 'otro') {
-      this.especialidadPersonalizada = '';
-    }
-  }
+  // onImagenPerfilSeleccionada(event: any) {
+  //   this.selectedFiles = event.target.files[0];
+  //   console.log(this.selectedFiles);
+  // }
+
+  // selectFile(event: any): void {
+  //   this.selectedFile = event.target.files[0];
+  //   console.log(this.selectedFile);
+  // }
+
+  // selectFile2(event: any): void {
+  //   this.selectedFile2 = event.target.files[0];
+  //   console.log(this.selectedFile2);
+  // }
+
+  // onEspecialidadSeleccionada() {
+  //   if (this.especialidadSeleccionada.nombre !== 'otro') {
+  //     this.especialidadPersonalizada = '';
+  //   }
+  // }
 }

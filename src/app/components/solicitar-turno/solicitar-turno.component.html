@@ -1,0 +1,15 @@
+<div class="container">
+    <p>{{currentPathDisplay}}</p>
+    <section class="especialidades-section" *ngFor="let especialidad of especialidadesService.getAll() | async">
+        <div class="card" (click)="onSelectEspecialidad(especialidad.nombre)">
+            <img src="../../../assets/especialidad.png" alt="Especialidad">
+            <h2>{{especialidad?.nombre}}</h2>
+        </div>
+    </section>
+    <section class="especialistas-section" *ngFor="let especialista of especialistas">
+        <div src="card">
+            <img src="{{especialista.imagenPerfil}}" alt="{{especialista.apellido}}">
+            <h2>{{especialista.nombre}}</h2>
+        </div>
+    </section>>
+</div>
