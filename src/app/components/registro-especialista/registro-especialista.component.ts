@@ -56,8 +56,8 @@ export class RegistroEspecialistaComponent {
         console.error('Error al obtener las especialidades', error);
       }
     );
-  
-   
+
+
   }
   async registrarEspecialista() {
     if(this.especialistaForm.valid){
@@ -75,7 +75,6 @@ export class RegistroEspecialistaComponent {
             .subscribe((especialidadExistente) => {
               if(!especialidadExistente){
                 this.especialista.especialidades.push( {id: id, nombre: this.especialidadPersonalizada, imageUrl: ''})
-                this.especialista.especialidades.push(new Especialidad)
                 this.especialidadService.create(this.especialidadPersonalizada,id)
               }
             });
@@ -85,7 +84,7 @@ export class RegistroEspecialistaComponent {
               this.verifyEmail = true;
               this.router.navigate(['home'])
             })
-  
+
           }
         })
         .catch(() => {
@@ -97,9 +96,9 @@ export class RegistroEspecialistaComponent {
         control.markAsTouched({ onlySelf: true });
       });
     }
-    
+
   }
- 
+
 
   onImagenPerfilSeleccionada(event: any) {
     this.selectedFiles = event.target.files[0];
@@ -119,27 +118,27 @@ export class RegistroEspecialistaComponent {
   get nombre() {
     return this.especialistaForm.get('nombre');
   }
-  
+
   get apellido() {
     return this.especialistaForm.get('apellido');
   }
-  
+
   get edad() {
     return this.especialistaForm.get('edad');
   }
-  
+
   get dni() {
     return this.especialistaForm.get('dni');
   }
-  
+
   get obraSocial() {
     return this.especialistaForm.get('obraSocial');
   }
-  
+
   get email() {
     return this.especialistaForm.get('email');
   }
-  
+
   get password() {
     return this.especialistaForm.get('password');
   }

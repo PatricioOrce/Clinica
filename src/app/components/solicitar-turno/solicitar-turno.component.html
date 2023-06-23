@@ -7,7 +7,7 @@
         </div>
     </section>
     <section class="especialistas-section" *ngFor="let especialista of especialistas">
-        <div src="card">
+        <div class="card" *ngIf="especialista.habilitado">
             <img src="{{especialista.imagenPerfil}}" alt="{{especialista.apellido}}">
             <h2>{{especialista.nombre}}</h2>
         </div>

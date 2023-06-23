@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,6 +11,8 @@ export class LoginComponent {
   password: string = '';
 
   verifyEmail: boolean = false;
+  captchaResult: boolean = false;
+
 
   constructor(private authService: AuthService) { }
 
@@ -19,6 +21,10 @@ export class LoginComponent {
     console.log('Email:', this.email);
     console.log('Contraseña:', this.password);
     this.authService.login(this.email, this.password);
+  }
+
+  onCaptcha(value: boolean){
+    this.captchaResult = value;
   }
 
   accesoRapido() {
@@ -30,13 +36,12 @@ export class LoginComponent {
     this.email = "patricioorce2001@gmail.com"
   }
   accesoRapidoEspecialista1(){
-    
     this.password = "123456789"
-    this.email = "parturotru@gufum.com"
+    this.email = "jeknilodro@gufum.com"
   }
   accesoRapidoEspecialista2(){
-    this.password = "1234567"
-    this.email = "joknuzofya@gufum.com"
+    this.password = "123456789"
+    this.email = "sorduverte@gufum.com"
   }
   accesoRapidoPaciente1(){
     this.password = "123456789"

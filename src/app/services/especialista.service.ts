@@ -37,7 +37,6 @@ export class EspecialistaService {
   async insert(data: any, id: string | undefined) {
     const docRef = this.especialistasCollection.doc(id);
     data.id = id;
-    data.especialidades = { ...data.especialidades[0] };
     console.log('especialisttt', data);
     return docRef.set({
       ...data,
@@ -149,9 +148,11 @@ export class EspecialistaService {
   getByEspecialidad(especialidad: Especialidad): Especialista[] {
     var especialistasFiltrados: Especialista[] = [];
     this.especialistasCollection.valueChanges().subscribe((especialistas) => {
+      console.log(especialistas)
       especialistas.forEach((especialista) => {
-        const especialidadesEspecialista = especialista.especialidades;
-        const especialidadEncontrada = especialidadesEspecialista.find(
+        var especialidadesEspecialista: Especialidad[] = especialista.especialidades;
+        console.log(typeof especialidadesEspecialista)
+        const especialidadEncontrada = especialidadesEspecialista.filter  (
           (e) => e.id === especialidad.id
         );
         if (especialidadEncontrada) {

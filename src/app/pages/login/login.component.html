@@ -7,26 +7,26 @@
   <label for="inputPassword" class="sr-only">Password</label>
   <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="password" placeholder="Password"
       required>
-  <button class="btn btn-lg btn-primary btn-block" (click)="login()">Sign in</button>
+  <button class="btn btn-lg btn-primary btn-block" [disabled]="!captchaResult" (click)="login()">Sign in</button>
 </form>
 
 
 
 <div class="quick-access-buttons">
-  
+
   <button class="quick-access-button admin" (click)="accesoRapidoAdmin()">
     <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/especialistas1687214587185.png?alt=media&token=08b0da1f-0787-4763-9519-6724af33d8bd" alt="Imagen de perfil del especialista">
     <span>Patricio<br>(Admin)</span>
   </button>
 
   <button class="quick-access-button specialist" (click)="accesoRapidoEspecialista1()">
-    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/especialistas1687217791442.png?alt=media&token=17ce1a64-cf35-4add-8617-e2420161fc13" alt="Imagen de perfil del paciente">
-    <span>Fulanito<br>(Especialista)</span>
+    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/especialistas1687475303839.png?alt=media&token=9feb6a66-760a-45c0-9c3a-388705e7347c" alt="Imagen de perfil del paciente">
+    <span>Hibbert<br>(Especialista)</span>
   </button>
 
   <button class="quick-access-button patient" (click)="accesoRapidoEspecialista2()">
-    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/especialistas1687210274205.png?alt=media&token=d9cea358-1606-49af-88d1-dc3dc8af1050" alt="Imagen de perfil del paciente">
-    <span>Luis<br>(Especialista)</span>
+    <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/especialistas1687475037153.png?alt=media&token=e6f65357-996c-491d-9e5c-12a4ba823c4d" alt="Imagen de perfil del paciente">
+    <span>Nick<br>(Especialista)</span>
   </button>
 
   <button class="quick-access-button admin" (click)="accesoRapidoPaciente1()">
@@ -43,5 +43,9 @@
     <img src="https://firebasestorage.googleapis.com/v0/b/clinica-orce-patricio.appspot.com/o/pacientes1687223112299.png?alt=media&token=e743302a-4325-46e4-a8ba-a8a2cd787eae" alt="Imagen de perfil del administrador">
     <span>Jose<br>(Paciente)</span>
   </button>
+
+</div>
+<div class="captcha-container" >
+  <app-captcha-propio (UserInput)="onCaptcha($event)"></app-captcha-propio>
 
 </div>

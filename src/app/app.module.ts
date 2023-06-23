@@ -15,12 +15,13 @@ import { RegistroAdministradorComponent } from './components/registro-administra
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SolicitarTurnoComponent } from './components/solicitar-turno/solicitar-turno.component';
 import { TablaEspecialidadesComponent } from './components/tabla-especialidades/tabla-especialidades.component';
+import { CaptchaPropioComponent } from './components/captcha-propio/captcha-propio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SolicitarTurnoComponent,
-    
+
     // RegistroPacienteComponent,
     // RegistroEspecialistaComponent,
     // RegistroAdministradorComponent,

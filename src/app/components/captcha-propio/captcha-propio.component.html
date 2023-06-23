@@ -1,0 +1,6 @@
+<div class="captcha-container">
+  <div class="captcha-text">{{ captchaText }}</div>
+  <input type="text" [(ngModel)]="userInput" placeholder="Ingrese el texto">
+  <button (click)="refreshCaptcha()">Refrescar</button>
+  <button (click)="sendCaptcha()">Enviar</button>
+</div>

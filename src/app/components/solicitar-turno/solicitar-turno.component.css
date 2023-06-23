@@ -1,14 +1,15 @@
 .container {
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
   }
-  
+
   .especialidades-section {
     width: 300px;
     margin: 20px;
   }
-  
+
   .card {
     position: relative;
     background-color: #fff;
@@ -21,18 +22,18 @@
     height: 100%;
     text-align: center;
   }
-  
+
   .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-  
+
   .card img {
     width: 100%;
     height: auto;
     margin-bottom: 10px;
   }
-  
+
   .card h2 {
     font-size: 18px;
     font-weight: bold;

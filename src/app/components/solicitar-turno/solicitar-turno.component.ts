@@ -43,7 +43,7 @@ export class SolicitarTurnoComponent {
     this.currentPath.forEach(x => {
       this.currentPathDisplay = x + '>'
     })
-    // this.currentPathDisplay = 
+    // this.currentPathDisplay =
 
   }
 }

@@ -5,9 +5,11 @@ export class Especialista extends Usuario{
   especialidades: Especialidad[] = [];
   habilitado: boolean = false;
 
+  
+
   constructor() {
    super()
-   this.perfil = "especialista"    
+   this.perfil = "especialista"
   }
 
 }
